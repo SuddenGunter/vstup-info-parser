@@ -1,8 +1,8 @@
 ﻿namespace vstupinfo.Common.Models
 {
-    public class StateModel
+    public class State
     {
-        public string Url { get; set; }
         public string TableName { get; set; }
+        public string Url { get; set; }
     }
 }

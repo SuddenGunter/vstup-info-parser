@@ -2,8 +2,10 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
+using Serilog;
 using vstupinfo.Common;
 using vstupinfo.Common.Models;
+using vstupinfo.Loader.Scrappers;
 
 namespace vstupinfo.Loader
 {
@@ -11,21 +13,20 @@ namespace vstupinfo.Loader
     {
         static async Task Main(string[] args)
         {
-            //setup our DI
-            var serviceProvider = new ServiceCollection()
-                
-                .BuildServiceProvider();
-          
-            AutomapperConfig.Configure();
-
-            (await new StateScrapper().Scrap(new StateModel()
+            try
             {
-                Url = "http://vstup.info/2018/i2018o21.html",
-                TableName = "vnzt0"
-            })).ToList().ForEach(x =>
+                var services = new Config().BuildServices();
+                var task = services.GetRequiredService<DownloadTask>();
+                await task.Execute();
+            }
+            catch (Exception ex)
             {
-                Console.WriteLine(x.Name);
-            });
+                Log.Error(ex, "App died cause of error");
+            }
+            finally
+            {
+                Log.CloseAndFlush();
+            }
         }
     }
 }
