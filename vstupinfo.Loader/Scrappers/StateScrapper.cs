@@ -19,7 +19,8 @@ namespace vstupinfo.Loader.Scrappers
             var cells = page.QuerySelectorAll(query);
             var universities = cells.Select(u => new University()
             {
-                Name = u.TextContent,
+                Name = u.TextContent
+                       .Replace("\"",""),
                 Url = u.GetHref()
             }).ToList();
             Log.Information("Got {Count} universities", universities.Count);

@@ -2,8 +2,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "vstupinfo.Loader", "vstupinfo.Loader\vstupinfo.Loader.csproj", "{086A02C3-C267-4848-B4A6-A51AB9955322}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "vstupinfo.Database", "vstupinfo.Database\vstupinfo.Database.csproj", "{F5B338C2-87A0-421B-A312-3C2D19BE7750}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "vstupinfo.Common", "vstupinfo.Common\vstupinfo.Common.csproj", "{2890DF02-F44F-46FF-A9A0-2ED06BB85001}"
 EndProject
 Global
