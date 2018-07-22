@@ -31,8 +31,9 @@ namespace vstupinfo.Loader.Scrappers
                 var specialties = rows.Select(x =>
                 {
                     var name = newDesign ?
-                           x.QuerySelector(queryInfo).TextContent
+                           x.QuerySelector(queryInfo).TextContent.Split("\n").ElementAt(4).Trim(' ')
                            : x.QuerySelectorAll(queryName).Select(e => e.TextContent).Aggregate((q, y) => q + "; Факультет: " + y);
+                    
                     return new Specialty()
                     {
                         Info = x.QuerySelector(queryInfo).TextContent,
